@@ -1,11 +1,15 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { fetchContacts, addContacts, deleteContacts } from './operations';
+
+import {
+  fetchContacts,
+  addContacts,
+  deleteContacts,
+} from 'redux/contacts/operations';
 
 const getActions = type =>
   isAnyOf(fetchContacts[type], addContacts[type], deleteContacts[type]);
 
 const initialState = { items: [], isLoading: false, error: null };
-
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
@@ -37,5 +41,4 @@ const contactsSlice = createSlice({
 });
 
 export const { addContact, deleteContact } = contactsSlice.actions;
-
 export const contactsReducer = contactsSlice.reducer;
